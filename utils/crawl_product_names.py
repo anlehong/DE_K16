@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 
 BATCH_SIZE = 500  # Kích thước batch khi đọc dữ liệu từ CSV
 THREADS = 4  # Số luồng chạy song song
-TEMP_INPUT_FILE = "product_data_temp.csv"  # File chứa dữ liệu sản phẩm cần crawl
+TEMP_INPUT_FILE = "test.csv"  # File chứa dữ liệu sản phẩm cần crawl
 OUTPUT_FILE = "crawled_products.csv"  # File lưu kết quả
 FAILED_FILE = "failed_crawls.json"  # File lưu các crawl bị lỗi
 LOCK = threading.Lock()
@@ -24,7 +24,7 @@ def fetch_product_name(url):
     """Crawl tên sản phẩm từ URL bằng cloudscraper"""
     try:
         headers = {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:115.0) Gecko/20100101 Firefox/115.0'
         }
     
         time.sleep(random.uniform(2, 5))
@@ -77,6 +77,7 @@ def crawl_products():
             executor.submit(process_batch, batch)
 
     print(f"Crawl hoàn tất! Kết quả lưu vào {OUTPUT_FILE}")
+if __name__ == "__main__":
 
-url = "https://www.glamira.fr/glamira-pendentif-pour-hommes-viktor.html?alloy=yellow-375"
-print(fetch_product_name(url))
+    url = "https://www.glamira.sk/zasnubne-prstene/diaman/"
+    print(fetch_product_name(url))

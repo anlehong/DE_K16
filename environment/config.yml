@@ -1,0 +1,6 @@
+LOGGING:
+  level: INFO
+  log_file: logs/data_enrichment.log
+  to_console: true
+BATCH_SIZE: 10
+PROCESSES: 10
